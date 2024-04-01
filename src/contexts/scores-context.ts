@@ -95,6 +95,7 @@ export class Scores {
   /** Restart the game */
   restart() {
     localStorage.removeItem("rounds");
+    location.reload();
   }
 }
 
