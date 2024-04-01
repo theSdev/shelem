@@ -16,5 +16,5 @@ Bundling for production:
 ```sh
 npm i
 npm run build
-npm run preview # Serves preview the build, unsuitable for actual prod use
+npm run preview # Serves a preview of the build, unsuitable for actual prod use
 ```
