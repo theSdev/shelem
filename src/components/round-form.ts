@@ -22,7 +22,10 @@ export class RoundForm extends LitElement {
       <h2 id="round-title">Round</h2>
       <form @submit=${this.handleSubmit}>
         <fieldset name="claim">
-          <legend><span>Claim</legend>
+          <legend>Claim</legend>
+          <label for="claiming-group" class="visually-hidden">
+            Claiming group
+          </label>
           <select
             id="claiming-group"
             @input=${this.handleClaimingGroupInput}
@@ -32,6 +35,9 @@ export class RoundForm extends LitElement {
             <option value="them">They</option>
           </select>
           claimed
+          <label for="claimed-score" class="visually-hidden">
+            Claimed score
+          </label>
           <input
             id="claimed-score"
             type="number"
@@ -44,9 +50,12 @@ export class RoundForm extends LitElement {
           />
         </fieldset>
         <fieldset name="result">
-          <legend><span>Result</legend>
+          <legend>Result</legend>
           <span>${passiveGroupToActive(this.challengerGroup)}</span>
           <span>scored</span>
+          <label for="challenger-score" class="visually-hidden">
+            Challenger score
+          </label>
           <input
             id="challenger-score"
             type="number"
@@ -119,6 +128,16 @@ export class RoundForm extends LitElement {
 
     button {
       margin: 1rem;
+    }
+
+    .visually-hidden {
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
     }
   `;
 }
