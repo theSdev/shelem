@@ -53,6 +53,7 @@ export class ScoreBoard extends LitElement {
                       <button
                         @click=${() => this.handleRemoval(index)}
                         aria-label="Delete row"
+                        ?hidden=${this.scores?.finished}
                       >
                         X
                       </button>
