@@ -133,10 +133,6 @@ export class ScoreBoard extends LitElement {
     tfoot {
       inset-block-end: 0;
       font-weight: 600;
-
-      td {
-        border-block-end: none;
-      }
     }
   `;
 }
