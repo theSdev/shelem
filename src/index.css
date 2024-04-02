@@ -25,6 +25,21 @@ body {
   grid-template-rows: auto 1fr;
 }
 
+header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: 1em;
+
+  img {
+    transform: translateY(20%);
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
 main {
   min-block-size: 0;
 }
