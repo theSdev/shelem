@@ -12,12 +12,24 @@ export default {
           {
             src: "logo.svg",
             sizes: "192x192",
+            type: "image/svg+xml",
+          },
+          {
+            src: "logo-maskable-192.png",
+            sizes: "192x192",
             type: "image/png",
+            purpose: "maskable",
           },
           {
             src: "logo.svg",
             sizes: "512x512",
+            type: "image/svg+xml",
+          },
+          {
+            src: "logo-maskable-512.png",
+            sizes: "512x512",
             type: "image/png",
+            purpose: "maskable",
           },
         ],
       },
