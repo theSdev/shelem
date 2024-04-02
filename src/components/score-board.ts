@@ -1,5 +1,5 @@
-import { LitElement, css, html } from "lit";
-import { customElement } from "lit/decorators.js";
+import { LitElement, PropertyValueMap, css, html } from "lit";
+import { customElement, query } from "lit/decorators.js";
 import { repeat } from "lit/directives/repeat.js";
 import { consume } from "@lit/context";
 import { Scores, scoresContext } from "../contexts/scores-context";
@@ -10,6 +10,7 @@ export class ScoreBoard extends LitElement {
   @consume({ context: scoresContext })
   scores?: Scores;
 
+  @query("table") table!: HTMLTableElement;
   private roundHandler = this.handleRound.bind(this);
 
   override connectedCallback(): void {
@@ -20,6 +21,14 @@ export class ScoreBoard extends LitElement {
   override disconnectedCallback(): void {
     document.removeEventListener("round", this.roundHandler);
     super.disconnectedCallback();
+  }
+
+  override updated(
+    _changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>
+  ): void {
+    const { rows } = this.table.tBodies[0];
+    const lastRow = rows.item(rows.length - 1);
+    lastRow?.scrollIntoView({ behavior: "smooth" });
   }
 
   private handleRound() {
@@ -91,6 +100,7 @@ export class ScoreBoard extends LitElement {
 
     .table-wrapper {
       overflow: auto;
+      border-block: 1px solid light-dark(black, white);
     }
 
     table {
@@ -107,6 +117,10 @@ export class ScoreBoard extends LitElement {
 
     thead {
       inset-block-start: 0;
+
+      th {
+        border-block-start: none;
+      }
     }
 
     th,
@@ -119,6 +133,10 @@ export class ScoreBoard extends LitElement {
     tfoot {
       inset-block-end: 0;
       font-weight: 600;
+
+      td {
+        border-block-end: none;
+      }
     }
   `;
 }
